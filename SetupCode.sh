@@ -1,17 +1,21 @@
 #!/bin/bash
 
-echo "📦 Installing required Python packages..."
+# Cấp quyền truy cập bộ nhớ cho Termux
+termux-setup-storage
 
-# Danh sách thư viện cần cài (loại bỏ built-in)
-packages=(
-  tqdm
-  cryptography
-)
+# Cập nhật hệ thống
+pkg update -y
+pkg upgrade -y
 
-# Cài từng gói bằng pip
-for pkg in "${packages[@]}"; do
-  echo "🔄 Installing $pkg..."
-  pip install "$pkg"
-done
+# Cài đặt các gói cần thiết
+pkg install -y python
+pkg install -y python-pip
+pkg install -y tsu
+pkg install -y libexpat
+pkg install -y openssl
 
-echo "✅ All libraries required have been installed."
+# Cài đặt thư viện Python
+pip install requests
+pip install psutil
+
+echo "✅ Cài đặt hoàn tất."
