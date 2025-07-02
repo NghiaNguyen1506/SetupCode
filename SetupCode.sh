@@ -2,6 +2,8 @@
 
 termux-setup-storage
 
+echo "📦 Installing dependencies..."
+
 pkg update -y
 pkg upgrade -y
 
